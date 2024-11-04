@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/2players-team-randomizer/static/css/main.5e41044a.css",
+    "main.js": "/2players-team-randomizer/static/js/main.60ffac5b.js",
+    "index.html": "/2players-team-randomizer/index.html",
+    "main.5e41044a.css.map": "/2players-team-randomizer/static/css/main.5e41044a.css.map",
+    "main.60ffac5b.js.map": "/2players-team-randomizer/static/js/main.60ffac5b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5e41044a.css",
+    "static/js/main.60ffac5b.js"
+  ]
+}
