@@ -12,8 +12,10 @@ import {
   IconButton,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
 import { Player, Group } from '../types/types';
 import { getStorageData, saveStorageData } from '../utils/storage';
+import Notification from './Notification';
 
 const EditGroup = () => {
   const { groupId } = useParams();
@@ -21,6 +23,11 @@ const EditGroup = () => {
   const [players, setPlayers] = useState<Player[]>([]);
   const [newPlayer, setNewPlayer] = useState('');
   const [groupName, setGroupName] = useState('');
+  const [notification, setNotification] = useState({
+    open: false,
+    message: '',
+    severity: 'error' as const
+  });
 
   useEffect(() => {
     const data = getStorageData();
@@ -35,10 +42,26 @@ const EditGroup = () => {
 
   const handleAddPlayer = (e: React.FormEvent) => {
     e.preventDefault();
-    if (newPlayer.trim()) {
+    const playerName = newPlayer.trim();
+    
+    if (playerName) {
+      // Check if player name already exists (case insensitive)
+      const nameExists = players.some(
+        player => player.name.toLowerCase() === playerName.toLowerCase()
+      );
+
+      if (nameExists) {
+        setNotification({
+          open: true,
+          message: 'This player name already exists!',
+          severity: 'error'
+        });
+        return;
+      }
+
       const player: Player = {
         id: Date.now().toString(),
-        name: newPlayer.trim(),
+        name: playerName,
       };
       setPlayers([...players, player]);
       setNewPlayer('');
@@ -69,6 +92,13 @@ const EditGroup = () => {
 
   return (
     <Container maxWidth="sm">
+      <Notification 
+        open={notification.open}
+        message={notification.message}
+        severity={notification.severity}
+        onClose={() => setNotification(prev => ({ ...prev, open: false }))}
+      />
+      
       <Box sx={{ py: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom align="center">
           Edit Group
@@ -82,7 +112,7 @@ const EditGroup = () => {
           margin="normal"
         />
 
-        <form onSubmit={handleAddPlayer}>
+        <form onSubmit={handleAddPlayer} style={{ display: 'flex', gap: '8px' }}>
           <TextField
             fullWidth
             label="Add Player"
@@ -90,6 +120,15 @@ const EditGroup = () => {
             onChange={(e) => setNewPlayer(e.target.value)}
             margin="normal"
           />
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{ mt: '16px', minWidth: '100px' }}
+            disabled={!newPlayer.trim()}
+            startIcon={<AddIcon />}
+          >
+            Add
+          </Button>
         </form>
 
         <List>

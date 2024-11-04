@@ -14,6 +14,11 @@ import { getStorageData, saveStorageData } from '../utils/storage';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
+const RANDOM_PLAYER: Player = {
+  id: 'random-player',
+  name: 'RandomPlayer'
+};
+
 const TeamDisplay = () => {
   const { groupId } = useParams();
   const navigate = useNavigate();
@@ -35,14 +40,29 @@ const TeamDisplay = () => {
     const shuffled = [...players].sort(() => Math.random() - 0.5);
     const newTeams: Team[] = [];
     
-    for (let i = 0; i < shuffled.length; i += 2) {
+    const playersToUse = shuffled.length % 2 === 1 
+      ? [...shuffled, RANDOM_PLAYER]
+      : shuffled;
+    
+    for (let i = 0; i < playersToUse.length; i += 2) {
       newTeams.push({
         id: Date.now().toString() + i,
-        players: [shuffled[i], shuffled[i + 1]] as [Player, Player],
+        players: [playersToUse[i], playersToUse[i + 1]] as [Player, Player]
       });
     }
     
     setTeams(newTeams);
+  };
+
+  const renderPlayerName = (player: Player) => {
+    if (player.id === RANDOM_PLAYER.id) {
+      return (
+        <Typography component="span" color="primary" fontStyle="italic">
+          {player.name}
+        </Typography>
+      );
+    }
+    return player.name;
   };
 
   const handleSaveTeams = () => {
@@ -94,7 +114,7 @@ const TeamDisplay = () => {
                   Team {index + 1}
                 </Typography>
                 <Typography>
-                  {team.players[0].name} & {team.players[1].name}
+                  {renderPlayerName(team.players[0])} & {renderPlayerName(team.players[1])}
                 </Typography>
               </CardContent>
             </Card>
