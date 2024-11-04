@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# 2Players Team Randomizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application that helps organize players into teams of two. Perfect for sports, games, or any activity requiring paired teams. Works offline and saves your groups locally.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Create and manage groups of players (minimum 4 players)
+- Automatically generate random teams of 2 players
+- Save and name your favorite team combinations
+- Edit existing groups (add/remove players, rename)
+- Works offline after initial load
+- Mobile-friendly interface
+- No account required - all data stored locally
 
-### `npm start`
+## How to Use
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Create a Group**
+   - Click "Create New Group" on the home page
+   - Add at least 4 player names
+   - Give your group a name
+   - Save the group
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Generate Teams**
+   - Select a group from the home page
+   - Click "Start" to generate random teams
+   - Don't like the teams? Click "Regenerate Teams"
+   - Happy with the teams? Save them with a name
 
-### `npm test`
+3. **Manage Groups**
+   - Edit group names and players
+   - Delete groups you no longer need
+   - View all saved team combinations
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technical Details
 
-### `npm run build`
+Built with:
+- React
+- TypeScript
+- Material-UI
+- React Router
+- Local Storage for data persistence
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Development
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run this project locally:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# Clone the repository
+git clone https://github.com/mohamed-shiha/2players-team-randomizer.git
 
-### `npm run eject`
+# Navigate to project directory
+cd 2players-team-randomizer
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Install dependencies
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Start development server
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Deployment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The app is deployed using GitHub Pages and can be accessed at:
+[https://mohamed-shiha.github.io/2players-team-randomizer](https://mohamed-shiha.github.io/2players-team-randomizer)
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Feel free to open issues and pull requests for any improvements you'd like to add.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT License - feel free to use this project however you'd like.
